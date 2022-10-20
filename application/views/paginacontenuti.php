@@ -30,26 +30,26 @@
             var_dump($idspec);
         }
         
-        ?>   
-
+        ?>
 
     <div>
-        <h2><?= $nome ?></h2>
+        <h2 id="copia"></h2>
     </div>
 
     <button onclick="change()">ciao</button>
     <?php
     ?>
 
-    <select class="js-example-basic-single" name="state">
+    <select class="js-example-basic-single" name="state" >
     <?php
     
     foreach($pagine as $dati){
     ?>
-        <option><?= $dati['titolo'] ?></option>
+        <option =""><?= $dati['titolo'] ?></option>
     <?php 
     }
     ?>
+    
         
     </select>
     </body>
