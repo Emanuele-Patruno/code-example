@@ -11,31 +11,24 @@ class Crud_model extends CI_Model
       //$query = $this->db->query("SELECT * FROM pagine");
       //$row = $query->row();
       //return $row;
-      $query = $this->db->query("SELECT titolo FROM pagine WHERE titolo = 'Location'")->result_array();
+      $query = $this->db->query("SELECT titolo, id FROM pagine")->result_array();
       return $query;
     }
 
-    function paginacontenuti($id_db)
-    { 
-      $id_riga = "";
-
-      if($id_db != NULL){
-        $id_riga = " WHERE id = $id_db";
-      }else{
-        $id_riga = " WHERE id = '1'";
-      }
-      $query = $this->db->query("SELECT titolo FROM pagine $id_riga")->row_array();
-      return $query;
-    }
 
     function get_singolo_valore($id) {
 
       if ($id != 9999999) {
-          $interr = "where id=$id";
+          $interr = "WHERE id = $id";
       } else {
-          $interr = '';
+          $interr = "WHERE id = 1";
       }
+      return $this->db->query("SELECT titolo FROM pagine $interr")->row_array();
 
-      return $this->db->query('SELECT titolo FROM pagine $interr')->row_array();
+      // $str = $this->db->last_query();
+      // echo "<pre>";
+      // print_r($str);
+      // exit;
+      
   }
 }  

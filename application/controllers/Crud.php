@@ -21,10 +21,11 @@ class Crud extends CI_Controller
       $this->load->view('display_records',$result);
   }
 
-    public function paginacontenuti($id_db = NULL)
+    public function paginacontenuti()
     {
       //$result["data"] = $this->Crud_model->paginacontenuti($id_db);
-      $this->load->view('paginacontenuti');
+      $result['pagine']=$this->Crud_model->display_records();
+      $this->load->view('paginacontenuti',$result);
     }
 
 }

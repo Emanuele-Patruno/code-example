@@ -17,27 +17,40 @@
                             //$("#cambio").html('');
                         }
     </script>
-    <?php
+    <?php   
+        $nome = "";
         if (!$this->input->get('idsp')) {
             $data = $this->Crud_model->get_singolo_valore(9999999);
+            $nome = $data['titolo'];
             
         } else {
             $idspec = $this->input->get('idsp');
             $data = $this->Crud_model->get_singolo_valore($idspec);
+            $nome = $data['titolo'];
+            var_dump($idspec);
         }
-        var_dump($data);
+        
         ?>   
 
 
     <div>
-        <h2 id="cambio"><?= $data['titolo'] ?></h2>
+        <h2><?= $nome ?></h2>
     </div>
 
-    
-
     <button onclick="change()">ciao</button>
-    
+    <?php
+    ?>
 
+    <select class="js-example-basic-single" name="state">
+    <?php
     
+    foreach($pagine as $dati){
+    ?>
+        <option><?= $dati['titolo'] ?></option>
+    <?php 
+    }
+    ?>
+        
+    </select>
     </body>
 </html>
