@@ -23,8 +23,8 @@
     ?>
 
     <select id="valueSelect" class="js-example-basic-single" name="state" >
+        <option selected> Seleziona il titolo desiderato</option>
         <?php
-        
         foreach($pagine as $dati){
         ?>
             <option><?= $dati['titolo'] ?></option>
@@ -37,22 +37,22 @@
         <h2 id="result"></h2>
     </div>
 
-    <script>
+    <script>    
         const selectElem = document.getElementById('valueSelect');
         const resultElem = document.getElementById('result');
-        var indice = "";
+        var indice = 0;
 
         window.onload=function(){
-
             localStorage.setItem("result", $('#resultElem').val());
-
             selectElem.addEventListener("change", () =>{
             var indice = selectElem.selectedIndex;
-            location.href = base_url + 'crud/paginacontenuti?idsp=' + indice;
-            var index = $("#valueSelect option:selected").text();
-            resultElem.textContent = `${index}`;
+            //var index = $("#valueSelect option:selected").text();
+            //resultElem.textContent = `${index}`;
+            localStorage.setItem("risultato", $("#valueSelect option:selected").text());
             location.href = base_url + 'crud/paginacontenuti?idsp=' + indice;
             })
+            document.getElementById("result").innerHTML = localStorage.getItem("risultato");
+            
         }
         var base_url = 'http://localhost/example/';
 
